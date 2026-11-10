@@ -1,0 +1,71 @@
+.navBar {
+    position: fixed;
+    top: 20px;            
+    left: 50%;            
+    transform: translateX(-50%); 
+    z-index: 1000;        
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    font-size: 13pt;
+    letter-spacing: 0.2vh;
+    padding: 20px;
+    width: 55%;   
+    border-radius: 15px;
+    transition: 2s cubic-bezier(0.1, 0.82, 0.165, 0.8);
+    outline: none; 
+}
+
+.navBar:focus {
+    background-color: rgba(18, 18, 18, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(50px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    width: 35%; 
+    opacity: 90%;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #888888;
+    font-weight: 300;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-item:hover {
+    color: #cccccc;
+}
+
+.nav-item.active {
+    color: #ffffff;
+    font-weight: 300;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background-color: #7cfc00;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #7cfc00;
+    display: inline-block;
+    
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav-item.active .dot {
+    opacity: 1;
+    transform: scale(1);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
