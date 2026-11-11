@@ -8,4 +8,6 @@
     font-family: Montserrat Variable, -apple-system, system-ui, sans-serif;
     font-weight: 300;
     scroll-behavior: smooth;
+    transform: scaleY(0.989);
+    transform-origin: left top;
 }

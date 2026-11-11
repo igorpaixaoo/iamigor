@@ -8,14 +8,15 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 80px;
+    gap: 60px;
     font-size: 13pt;
-    letter-spacing: 0.2vh;
+    letter-spacing: 0.1vh;
     padding: 20px;
     width: 55%;   
     border-radius: 15px;
     transition: 2s cubic-bezier(0.1, 0.82, 0.165, 0.8);
     outline: none; 
+    background-color: transparent;
 }
 
 .navBar:focus {
@@ -33,9 +34,12 @@
     align-items: center;
     gap: 8px;
     color: #888888;
-    font-weight: 300;
+    font-weight: 350;
     cursor: pointer;
-    transition: color 0.3s ease, transform 0.2s ease;
+    background-color: rgba(18, 18, 18, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(50px);
+    opacity: 90%;
 }
 
 .nav-item:hover {
