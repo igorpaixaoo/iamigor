@@ -1,0 +1,120 @@
+.what-i-do-container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.service-card {
+    background-color: #151515;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px 28px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+    user-select: none;
+}
+
+
+.service-card:hover,
+.service-card:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+}
+
+
+.service-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #151515;
+}
+
+.service-title-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Ícone em tom lilás/roxo idêntico ao vídeo */
+.service-icon {
+    color: #280944;
+    flex-shrink: 0;
+    
+}
+
+.service-title {
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: #f4f4f5;
+    margin: 0;
+    letter-spacing: -0.01em;
+    background-color: #151515;
+}
+
+/* Seta direita com rotação suave */
+.chevron-icon {
+    color: #a1a1aa;
+    font-size: 0.95rem;
+    transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.2s ease;
+    background-color: #151515;
+}
+
+.service-card:hover .chevron-icon {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.chevron-icon.rotate {
+    transform: rotate(180deg);
+    color: #ffffff;
+}
+
+/* Sistema de expansão suave usando CSS Grid */
+.service-content-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.service-content-wrapper.expanded {
+    grid-template-rows: 1fr;
+}
+
+.service-content {
+    overflow: hidden;
+}
+
+
+/* Lista interna de habilidades */
+.service-list {
+    background-color: #151515;
+    margin: 20px 0 4px 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #9ca3af;
+    font-size: 1rem;
+    line-height: 1.5;
+    list-style-type: disc;
+}
+
+.service-list li::marker {
+    background-color: #151515;
+    color: #71717a;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .service-card {
+        padding: 20px;
+    }
+
+    .service-title {
+        font-size: 1.15rem;
+    }
+}

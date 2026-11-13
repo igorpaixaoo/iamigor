@@ -1,23 +1,22 @@
 .navBar {
-    position: fixed;
+    position: sticky;
     top: 20px;            
-    left: 50%;            
-    transform: translateX(-50%); 
+    margin: 0 auto 0 auto;
     z-index: 1000;        
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 60px;
+    gap: 55px;
     font-size: 13pt;
     letter-spacing: 0.1vh;
     padding: 20px;
-    width: 55%;   
-    border-radius: 15px;
-    transition: 2s cubic-bezier(0.1, 0.82, 0.165, 0.8);
+    width: 35%;   
+    transition: all 0.5s ease;
     outline: none; 
     background-color: transparent;
 }
+
 
 .navBar:focus {
     background-color: rgba(18, 18, 18, 0.1);
@@ -25,7 +24,7 @@
     -webkit-backdrop-filter: blur(50px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 50px;
-    width: 35%; 
+    width: 50%; 
     opacity: 90%;
 }
 
@@ -36,10 +35,9 @@
     color: #888888;
     font-weight: 350;
     cursor: pointer;
-    background-color: rgba(18, 18, 18, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(50px);
-    opacity: 90%;
+    background-color: transparent;
+    transition: all 0.5s ease;
+    outline: none; 
 }
 
 .nav-item:hover {
@@ -56,12 +54,10 @@
     height: 8px;
     background-color: #7cfc00;
     border-radius: 50%;
-    box-shadow: 0 0 8px #7cfc00;
     display: inline-block;
-    
     opacity: 0;
     transform: scale(0.5);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .nav-item.active .dot {
