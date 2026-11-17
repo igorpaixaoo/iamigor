@@ -1,13 +1,81 @@
 @import url('https://preview.themewagon.com/dark-minimal/fonts/montserrat-latin-wght-normal.woff2');
 
+:root {
+    --flatten: scaleY(0.989);
+    --flatten-root: scaleY(0.946);
+}
+
+html,
+body {
+    background-color: #101010;
+}
+
 *{
     margin: 0;
     padding: 0;
-    background-color: #101010;
     color: white;
     font-family: Montserrat Variable, -apple-system, system-ui, sans-serif;
     font-weight: 300;
     scroll-behavior: smooth;
-    transform: scaleY(0.989);
+}
+
+/* :where() zera a especificidade (igual ao "*"), para não sobrescrever
+   transforms das classes (seta, bolinha, hover dos botões...). */
+:where(*:not(html, body, #root, .App)) {
+    transform: var(--flatten);
     transform-origin: left top;
+}
+
+main {
+    transform: var(--flatten-root);
+}
+
+/* ---------- Cor de destaque para palavras-chave ---------- */
+:root {
+    --accent: #00f5d0;
+}
+
+.accent {
+    color: var(--accent);
+    font-weight: inherit;
+}
+
+/* ---------- Seções (My work, Let's talk) ---------- */
+.section {
+    display: flex;
+    flex-direction: column;
+    padding: 100px 20% 60px 20%;
+    text-align: left;
+    box-sizing: border-box;
+    scroll-margin-top: 40px;
+}
+
+.section-title {
+    font-size: 25pt;
+    font-weight: 500;
+    margin-bottom: 36px;
+}
+
+.section-title .accent {
+    font-weight: 500;
+}
+
+hr{
+    border: none;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 900px) {
+    .section {
+        padding: 80px 6% 40px 6%;
+    }
+
+
+}
+
+@media (min-width: 901px) and (max-width: 1100px) {
+    .section {
+        padding: 100px 10% 60px 10%;
+    }
 }

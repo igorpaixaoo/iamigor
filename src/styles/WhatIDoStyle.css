@@ -6,6 +6,8 @@
     max-width: 400px;
 }
 
+/* Só o card tem fundo; tudo dentro dele é transparente,
+   então o hover pinta a caixa inteira de forma uniforme. */
 .service-card {
     background-color: #151515;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -17,20 +19,18 @@
     user-select: none;
 }
 
-
 .service-card:hover,
 .service-card:focus {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #262626;
     border-color: rgba(255, 255, 255, 0.25);
     color: #ffffff;
 }
-
 
 .service-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #151515;
+    gap: 16px;
 }
 
 .service-title-group {
@@ -41,9 +41,9 @@
 
 /* Ícone em tom lilás/roxo idêntico ao vídeo */
 .service-icon {
+    display: block;
     color: #280944;
     flex-shrink: 0;
-    
 }
 
 .service-title {
@@ -52,20 +52,22 @@
     color: #f4f4f5;
     margin: 0;
     letter-spacing: -0.01em;
-    background-color: #151515;
 }
 
-/* Seta direita com rotação suave */
+/* Seta com rotação suave em torno do próprio centro
+   (o transform-origin global "left top" a fazia girar para fora do lugar) */
 .chevron-icon {
+    display: block;
+    flex-shrink: 0;
     color: #a1a1aa;
     font-size: 0.95rem;
+    transform: rotate(0deg);
+    transform-origin: center;
     transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.2s ease;
-    background-color: #151515;
 }
 
 .service-card:hover .chevron-icon {
     color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .chevron-icon.rotate {
@@ -88,10 +90,8 @@
     overflow: hidden;
 }
 
-
 /* Lista interna de habilidades */
 .service-list {
-    background-color: #151515;
     margin: 20px 0 4px 0;
     padding-left: 20px;
     display: flex;
@@ -104,7 +104,6 @@
 }
 
 .service-list li::marker {
-    background-color: #151515;
     color: #71717a;
 }
 

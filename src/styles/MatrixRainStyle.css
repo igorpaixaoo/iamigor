@@ -1,0 +1,30 @@
+.matrix-rain {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    min-height: 260px;
+    align-self: stretch;
+    overflow: hidden;
+    border-radius: 16px;
+    background-color: #101010;
+    margin-top: -60px;
+    margin-bottom: 50px;
+    /* bordas apagando suavemente */
+    mask-image: radial-gradient(ellipse at center, #000 55%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 55%, transparent 100%);
+}
+
+.matrix-rain canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    transform: none;
+}
+
+@media (max-width: 900px) {
+    .matrix-rain {
+        min-height: 200px;
+        width: 100%;
+        margin-top: 20px;
+    }
+}

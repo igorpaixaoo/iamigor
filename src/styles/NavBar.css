@@ -1,43 +1,73 @@
 .navBar {
-    position: sticky;
-    top: 20px;            
-    margin: 0 auto 0 auto;
-    z-index: 1000;        
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+    z-index: 1000;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 55px;
     font-size: 13pt;
     letter-spacing: 0.1vh;
-    padding: 20px;
-    width: 35%;   
-    transition: all 0.5s ease;
-    outline: none; 
-    background-color: transparent;
-}
-
-
-.navBar:focus {
-    background-color: rgba(18, 18, 18, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(50px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    width: 100%;
+    outline: none;
+    border: 1px solid transparent;
     border-radius: 50px;
-    width: 50%; 
-    opacity: 90%;
+    background-color: rgba(18, 18, 18, 0);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    transform: var(--flatten-root);
+    transform-origin: center top;
+    transition:
+        width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 0.6s ease,
+        border-color 0.6s ease,
+        backdrop-filter 0.6s ease,
+        -webkit-backdrop-filter 0.6s ease;
 }
 
+/* Largura da barra "focada" em cada seção: cresce conforme o usuário desce a página */
+.navBar { --nav-width: 35%; }
+.navBar[data-section="projects"] { --nav-width: 45%; }
+.navBar[data-section="contacts"] { --nav-width: 55%; }
+
+/* Mesmo visual do foco quando a página foi rolada */
+.navBar.scrolled,
+.navBar:focus,
+.navBar:focus-within {
+    width: var(--nav-width);
+    background-color: rgba(18, 18, 18, 0.55);
+    border-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 55px;
+}
+
+/* Botões sem o visual padrão do navegador */
 .nav-item {
     display: flex;
     align-items: center;
     gap: 8px;
+    padding: 0;
+    border: none;
+    font: inherit;
+    letter-spacing: inherit;
     color: #888888;
     font-weight: 350;
     cursor: pointer;
     background-color: transparent;
-    transition: all 0.5s ease;
-    outline: none; 
+    transition: color 0.4s ease, background-color 0.3s ease;
+    outline: none;
 }
 
 .nav-item:hover {
@@ -52,11 +82,13 @@
 .dot {
     width: 8px;
     height: 8px;
+    flex-shrink: 0;
     background-color: #7cfc00;
     border-radius: 50%;
     display: inline-block;
     opacity: 0;
     transform: scale(0.5);
+    transform-origin: center;
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
@@ -65,7 +97,119 @@
     transform: scale(1);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.5); }
-    to { opacity: 1; transform: scale(1); }
+/* ---------- Botão hambúrguer (só aparece no celular) ---------- */
+.hamburger {
+    display: none;
+    position: relative;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    background-color: rgba(18, 18, 18, 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.hamburger:focus-visible,
+.menu-open .hamburger {
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.hamburger-bar {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 20px;
+    height: 2px;
+    margin-left: -10px;
+    margin-top: -1px;
+    border-radius: 2px;
+    background-color: #e4e4e7;
+    transform-origin: center;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+}
+
+.hamburger-bar:nth-child(1) { transform: translateY(-6px); }
+.hamburger-bar:nth-child(2) { transform: none; }
+.hamburger-bar:nth-child(3) { transform: translateY(6px); }
+
+/* Vira um "X" quando o menu está aberto */
+.menu-open .hamburger-bar:nth-child(1) { transform: rotate(45deg); }
+.menu-open .hamburger-bar:nth-child(2) { opacity: 0; transform: scaleX(0.2); }
+.menu-open .hamburger-bar:nth-child(3) { transform: rotate(-45deg); }
+
+/* ---------- Celular ---------- */
+@media (max-width: 768px) {
+    .navBar,
+    .navBar.scrolled,
+    .navBar:focus,
+    .navBar:focus-within {
+        top: 16px;
+        left: auto;
+        right: 16px;
+        width: auto;
+        margin: 0;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        background-color: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        transform-origin: right top;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    /* Painel suspenso com os links */
+    .nav-links {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        min-width: 210px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        padding: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 18px;
+        background-color: rgba(18, 18, 18, 0.85);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+
+        opacity: 0;
+        visibility: hidden;
+        transform: var(--flatten) translateY(-8px) scale(0.96);
+        transform-origin: right top;
+        transition:
+            opacity 0.3s ease,
+            transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+            visibility 0s linear 0.35s;
+    }
+
+    .menu-open .nav-links {
+        opacity: 1;
+        visibility: visible;
+        transform: var(--flatten);
+        transition:
+            opacity 0.3s ease,
+            transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+            visibility 0s;
+    }
+
+    .nav-item {
+        padding: 12px 14px;
+        border-radius: 12px;
+        font-size: 1.05rem;
+    }
+
+    .nav-item:hover,
+    .nav-item.active {
+        background-color: rgba(255, 255, 255, 0.06);
+    }
 }

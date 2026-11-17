@@ -12,7 +12,9 @@ function App() {
       <NavBar/>
       <main>
         <Home/>
+        <hr></hr>
         <Projects/>
+        <hr></hr>
         <Contact/>
       </main>
     </div>

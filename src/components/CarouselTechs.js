@@ -39,7 +39,7 @@ const CarouselTechs = () => {
             <div className="carousel-track">
                 {doubleTechs.map((tech, index) => (
                     <div className="tech-card" key={index}>
-                        <img src={tech.logo} className="tech-icon" />
+                        <img src={tech.logo} className="tech-icon" alt="" />
                         <span className="tech-name">{tech.name}</span>
                     </div>
                 ))}

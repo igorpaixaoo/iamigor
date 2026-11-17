@@ -3,6 +3,7 @@ import '../../styles/HomeStyle.css';
 
 import CarouselTechs from '../CarouselTechs';
 import WhatIDo from '../WhatIDo';
+import MatrixRain from '../MatrixRain';
 
 const Home = () => {
     return (
@@ -29,7 +30,7 @@ const Home = () => {
                 </div>
                 <div className="right-column">
                     <h3 className="description">
-                        Transforming ideas into interactive and seamless digital experiences with cutting-edge <span className="white-text">software</span> development.
+                        Transforming ideas into interactive and seamless digital experiences with cutting-edge <span className="accent">software</span> development.
                     </h3>
                 </div>
             </div>
@@ -40,7 +41,10 @@ const Home = () => {
 
             <div className="whatIDo">
                 <h2>What I do?</h2>
-                <WhatIDo/>
+                <div className="whatIDo-content">
+                    <WhatIDo/>
+                    <MatrixRain/>
+                </div>
             </div>
         </section>
     );
