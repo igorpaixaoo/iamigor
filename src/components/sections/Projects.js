@@ -14,6 +14,15 @@ const projects = [
         live: null,
     },
     {
+        name: 'passo-certo',
+        description: 'This is an application designed to help the elderly understand and use technological tools.',
+        image: '',
+        status: 'in-progress',
+        techs: ['ReactNative', 'Node.js', 'Expo', 'MySQL', 'Kotlin'],
+        repo: GITHUB_URL + '/ibank',
+        live: null,
+    },
+    {
         name: 'ptnclima',
         description: 'A project that consumes a REST weather API, specifically for the city of Presidente Tancredo Neves (my hometown).',
         image: './projects/ptnclima.png',
